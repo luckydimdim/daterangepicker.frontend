@@ -105,12 +105,12 @@ class DateRangePicker {
   DateRangePicker(this._resourcesLoader, String query,
       DateRangePickerOptions options) {
     _resourcesLoader.loadStyle(
-        'vendor/bootstrap-daterangepicker/', 'daterangepicker.css');
+        'packages/daterangepicker/src/bower_components/bootstrap-daterangepicker/', 'daterangepicker.css');
 
-    _resourcesLoader.loadScript('vendor/moment/min/', 'moment.min.js', false);
+    _resourcesLoader.loadScript('packages/daterangepicker/src/bower_components/moment/min/', 'moment.min.js', false);
 
     _resourcesLoader.loadScript(
-        'vendor/bootstrap-daterangepicker/', 'daterangepicker.js', false,
+        'packages/daterangepicker/src/bower_components/bootstrap-daterangepicker/', 'daterangepicker.js', false,
         onData: () {
           $(query).daterangepicker(options);
         });
