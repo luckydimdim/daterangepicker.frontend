@@ -14,6 +14,43 @@ class DateRangePickerRange {
 
 @anonymous
 @JS()
+class DateRangePickerLocale {
+  external String get format;
+  external set format(String v);
+
+  external String get separator;
+  external set separator(String v);
+
+  external String get applyLabel;
+  external set applyLabel(String v);
+
+  external String get cancelLabel;
+  external set cancelLabel(String v);
+
+  external String get fromLabel;
+  external set fromLabel(String v);
+
+  external String get toLabel;
+  external set toLabel(String v);
+
+  external String get customRangeLabel;
+  external set customRangeLabel(String v);
+
+  external String get weekLabel;
+  external set weekLabel(String v);
+
+  external List<String> get daysOfWeek;
+  external set daysOfWeek(List<String> v);
+
+  external List<String> get monthNames;
+  external set monthNames(List<String> v);
+
+  external int get firstDay;
+  external set firstDay(int v);
+}
+
+@anonymous
+@JS()
 class DateRangePickerOptions {
 
   /*
@@ -91,43 +128,6 @@ class DateRangePickerOptions {
   external DateRangePickerLocale get locale;
 
   external set locale(DateRangePickerLocale v);
-}
-
-@anonymous
-@JS()
-class DateRangePickerLocale {
-  external String get format;
-  external set format(String v);
-
-  external String get separator;
-  external set separator(String v);
-
-  external String get applyLabel;
-  external set applyLabel(String v);
-
-  external String get cancelLabel;
-  external set cancelLabel(String v);
-
-  external String get fromLabel;
-  external set fromLabel(String v);
-
-  external String get toLabel;
-  external set toLabel(String v);
-
-  external String get customRangeLabel;
-  external set customRangeLabel(String v);
-
-  external String get weekLabel;
-  external set weekLabel(String v);
-
-  external List<String> get daysOfWeek;
-  external set daysOfWeek(List<String> v);
-
-  external List<String> get monthNames;
-  external set monthNames(List<String> v);
-
-  external int get firstDay;
-  external set firstDay(int v);
 }
 
 @JS()
