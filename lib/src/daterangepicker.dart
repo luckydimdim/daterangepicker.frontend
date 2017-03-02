@@ -2,8 +2,6 @@
 library daterangepicker;
 
 import 'package:js/js.dart';
-import 'dart:html';
-import 'dart:js';
 import 'package:resources_loader/resources_loader.dart';
 
 @anonymous
@@ -89,6 +87,46 @@ class DateRangePickerOptions {
 
   external set singleDatePicker(bool v);
 
+  external Locale get locale;
+
+  external set locale(Locale v);
+}
+
+@anonymous
+@JS()
+class Locale {
+  external String get format;
+  external set format(String v);
+
+  external String get separator;
+  external set separator(String v);
+
+  external String get applyLabel;
+  external set applyLabel(String v);
+
+  external String get cancelLabel;
+  external set cancelLabel(String v);
+
+  external String get fromLabel;
+  external set fromLabel(String v);
+
+  external String get toLabel;
+  external set toLabel(String v);
+
+  external String get customRangeLabel;
+  external set customRangeLabel(String v);
+
+  external String get weekLabel;
+  external set weekLabel(String v);
+
+  external List<String> get daysOfWeek;
+  external set daysOfWeek(List<String> v);
+
+  external List<String> get monthNames;
+  external set monthNames(List<String> v);
+
+  external int get firstDay;
+  external set firstDay(int v);
 }
 
 @JS()

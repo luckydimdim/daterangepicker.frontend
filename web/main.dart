@@ -33,13 +33,41 @@ class AppComponent {}
           type="text" ng-model="date" options="opts"
           style=""/>
       </div>''')
-class DrpComponent implements AfterViewInit {
+class DrpComponent
+  implements AfterViewInit {
   @override
-  void ngAfterViewInit(){
+  void ngAfterViewInit() {
     ResourcesLoaderService resourcesLoader = new ResourcesLoaderService();
 
+    var locale = new Locale()
+      ..format = 'DD.MM.YYYY'
+      ..separator = ' - '
+      ..applyLabel = 'Применить'
+      ..cancelLabel = 'Отменить'
+      ..fromLabel = 'С'
+      ..toLabel = 'По'
+      ..customRangeLabel = 'Custom'
+      ..weekLabel = 'W'
+      ..daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+      ..monthNames = [
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь'
+      ]
+      ..firstDay = 1;
+
     var options = new DateRangePickerOptions()
-      ..startDate = '01/21/2017';
+      ..startDate = '02.03.2017'
+      ..locale = locale;
 
     new DateRangePicker(resourcesLoader, "#daterangepicker", options);
   }
@@ -53,7 +81,8 @@ main() async {
   ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
-    const Provider(ResourcesLoaderService)]);
+    const Provider(ResourcesLoaderService)
+  ]);
 
   if (isDebug) {
     print('Application in DebugMode');
