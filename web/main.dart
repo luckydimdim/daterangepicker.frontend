@@ -39,7 +39,7 @@ class DrpComponent
   void ngAfterViewInit() {
     ResourcesLoaderService resourcesLoader = new ResourcesLoaderService();
 
-    var locale = new Locale()
+    var locale = new DateRangePickerLocale()
       ..format = 'DD.MM.YYYY'
       ..separator = ' - '
       ..applyLabel = 'Применить'

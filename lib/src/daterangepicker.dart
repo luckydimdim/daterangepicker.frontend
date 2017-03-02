@@ -87,14 +87,15 @@ class DateRangePickerOptions {
 
   external set singleDatePicker(bool v);
 
-  external Locale get locale;
 
-  external set locale(Locale v);
+  external DateRangePickerLocale get locale;
+
+  external set locale(DateRangePickerLocale v);
 }
 
 @anonymous
 @JS()
-class Locale {
+class DateRangePickerLocale {
   external String get format;
   external set format(String v);
 
@@ -140,8 +141,7 @@ external JQuery $([String query]);
 class DateRangePicker {
   ResourcesLoaderService _resourcesLoader;
 
-  DateRangePicker(this._resourcesLoader, String query,
-      DateRangePickerOptions options) {
+  DateRangePicker(this._resourcesLoader, String query, DateRangePickerOptions options) {
     _resourcesLoader.loadStyle(
         'packages/daterangepicker/src/bower_components/bootstrap-daterangepicker/', 'daterangepicker.css');
 
