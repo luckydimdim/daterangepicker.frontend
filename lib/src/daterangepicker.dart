@@ -128,6 +128,11 @@ class DateRangePickerOptions {
   external DateRangePickerLocale get locale;
 
   external set locale(DateRangePickerLocale v);
+
+
+  external bool get autoApply;
+
+  external set autoApply(bool v);
 }
 
 @JS()
