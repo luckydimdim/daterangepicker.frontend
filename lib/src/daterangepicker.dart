@@ -7,8 +7,9 @@ import 'package:js/js.dart';
 @JS()
 class DateRangePickerRange {
   external String get label;
-
   external set label(String v);
+
+  external factory DateRangePickerRange({String label});
 }
 
 @anonymous
@@ -46,12 +47,24 @@ class DateRangePickerLocale {
 
   external int get firstDay;
   external set firstDay(int v);
+
+  external factory DateRangePickerLocale(
+      {String format,
+      String separator,
+      String applyLabel,
+      String cancelLabel,
+      String fromLabel,
+      String toLabel,
+      String customRangeLabel,
+      String weekLabel,
+      List<String> daysOfWeek,
+      List<String> monthNames,
+      int firstDay});
 }
 
 @anonymous
 @JS()
 class DateRangePickerOptions {
-
   /*
   * (Date object, moment object or string) The start of the initially selected date range
   */
@@ -123,15 +136,27 @@ class DateRangePickerOptions {
 
   external set singleDatePicker(bool v);
 
-
   external DateRangePickerLocale get locale;
 
   external set locale(DateRangePickerLocale v);
 
-
   external bool get autoApply;
 
   external set autoApply(bool v);
+
+  external factory DateRangePickerOptions(
+      {String startDate,
+      String endDate,
+      String minDate,
+      String maxDate,
+      bool showDropdowns,
+      bool showWeekNumbers,
+      bool timePicker,
+      bool timePicker24Hour,
+      bool timePickerSeconds,
+      bool singleDatePicker,
+      DateRangePickerLocale locale,
+      bool autoApply});
 }
 
 @JS()
@@ -143,8 +168,8 @@ class JQuery {
 external JQuery $([String query]);
 
 class DateRangePicker {
-
-  DateRangePicker(String query, DateRangePickerOptions options, dynamic callback) {
+  DateRangePicker(
+      dynamic query, DateRangePickerOptions options, dynamic callback) {
     $(query).daterangepicker(options, callback);
   }
 }
