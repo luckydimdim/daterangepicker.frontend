@@ -8,7 +8,7 @@ import 'package:angular2/platform/common.dart';
 
 import 'package:resources_loader/resources_loader.dart';
 import 'package:master_layout/master_layout_component.dart';
-import 'package:daterangepicker/daterangepicker_component.dart';
+import 'package:daterangepicker/daterangepicker_directive.dart';
 import 'package:daterangepicker/daterangepicker.dart';
 import 'package:alert/alert_service.dart';
 
@@ -19,9 +19,14 @@ bool get isDebug =>
 @View(
   template: '''
     <master-layout>
-      <daterangepicker [options]="optionsModel" (selected)="dateSelected(\$event)"></daterangepicker>
+
+          <input daterangepicker type="text" class="form-control" id="start-date"
+                           placeholder="Укажите дату заключения договора"
+
+                           [options]="optionsModel" (selected)="dateSelected(\$event)"/>
+
     </master-layout>''',
-  directives: const [MasterLayoutComponent, DateRangePickerComponent])
+  directives: const [MasterLayoutComponent, DateRangePickerDirective])
 class AppComponent {
 
   DateRangePickerOptions optionsModel = new DateRangePickerOptions();

@@ -4,17 +4,8 @@ import 'package:js/js_util.dart';
 import 'package:daterangepicker/daterangepicker.dart';
 import 'package:js/js.dart';
 
-@Component(selector: 'daterangepicker')
-@View(
-    template: '''
-      <div>
-        <input #daterangepicker date-range-picker="" id="daterangepicker"
-          placeholder="Период"
-          class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-touched"
-          type="text" ng-model="date" options="opts"
-          style=""/>
-      </div>''')
-class DateRangePickerComponent implements AfterViewInit {
+@Directive(selector: '[daterangepicker]')
+class DateRangePickerDirective implements AfterViewInit {
 
   @Input('options')
   dynamic options = new DateRangePickerOptions();
@@ -22,8 +13,9 @@ class DateRangePickerComponent implements AfterViewInit {
   @Output()
   final selected  = new EventEmitter<Object>();
 
-  @ViewChild('daterangepicker')
   ElementRef input;
+
+  DateRangePickerDirective(this.input);
 
   @override
   void ngAfterViewInit() {
