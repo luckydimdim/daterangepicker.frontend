@@ -2,7 +2,6 @@
 library daterangepicker;
 
 import 'package:js/js.dart';
-import 'package:resources_loader/resources_loader.dart';
 
 @anonymous
 @JS()
@@ -137,25 +136,15 @@ class DateRangePickerOptions {
 
 @JS()
 class JQuery {
-  external daterangepicker(DateRangePickerOptions options);
+  external daterangepicker(DateRangePickerOptions options, dynamic callback);
 }
 
 @JS()
 external JQuery $([String query]);
 
 class DateRangePicker {
-  ResourcesLoaderService _resourcesLoader;
 
-  DateRangePicker(this._resourcesLoader, String query, DateRangePickerOptions options) {
-    _resourcesLoader.loadStyle(
-        'packages/daterangepicker/src/bower_components/bootstrap-daterangepicker/', 'daterangepicker.css');
-
-    _resourcesLoader.loadScript('packages/daterangepicker/src/bower_components/moment/min/', 'moment.min.js', false);
-
-    _resourcesLoader.loadScript(
-        'packages/daterangepicker/src/bower_components/bootstrap-daterangepicker/', 'daterangepicker.js', false,
-        onData: () {
-          $(query).daterangepicker(options);
-        });
+  DateRangePicker(String query, DateRangePickerOptions options, dynamic callback) {
+    $(query).daterangepicker(options, callback);
   }
 }

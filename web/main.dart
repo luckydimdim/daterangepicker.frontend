@@ -8,8 +8,9 @@ import 'package:angular2/platform/common.dart';
 
 import 'package:resources_loader/resources_loader.dart';
 import 'package:master_layout/master_layout_component.dart';
-
+import 'package:daterangepicker/daterangepicker_component.dart';
 import 'package:daterangepicker/daterangepicker.dart';
+import 'package:alert/alert_service.dart';
 
 bool get isDebug =>
   (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) != 'true';
@@ -18,27 +19,15 @@ bool get isDebug =>
 @View(
   template: '''
     <master-layout>
-      <drp></drp>
+      <daterangepicker [options]="optionsModel" (selected)="dateSelected(\$event)"></daterangepicker>
     </master-layout>''',
-  directives: const [MasterLayoutComponent, DrpComponent])
-class AppComponent {}
+  directives: const [MasterLayoutComponent, DateRangePickerComponent])
+class AppComponent {
 
-@Component(selector: 'drp')
-@View(
-  template: '''
-      <div>
-        <input date-range-picker="" id="daterangepicker"
-          placeholder="Период"
-          class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-touched"
-          type="text" ng-model="date" options="opts"
-          style=""/>
-      </div>''')
-class DrpComponent
-  implements AfterViewInit {
-  @override
-  void ngAfterViewInit() {
-    ResourcesLoaderService resourcesLoader = new ResourcesLoaderService();
+  DateRangePickerOptions optionsModel = new DateRangePickerOptions();
 
+
+  AppComponent() {
     var locale = new DateRangePickerLocale()
       ..format = 'DD.MM.YYYY'
       ..separator = ' - '
@@ -65,12 +54,17 @@ class DrpComponent
       ]
       ..firstDay = 1;
 
-    var options = new DateRangePickerOptions()
+    optionsModel = new DateRangePickerOptions()
+      ..singleDatePicker = true
       ..startDate = '02.03.2017'
       ..locale = locale;
-
-    new DateRangePicker(resourcesLoader, "#daterangepicker", options);
   }
+
+  dateSelected(e) {
+    print(e['start']);
+    print(e['end']);
+  }
+
 }
 
 main() async {
@@ -81,7 +75,8 @@ main() async {
   ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
-    const Provider(ResourcesLoaderService)
+    const Provider(ResourcesLoaderService),
+    const Provider(AlertService)
   ]);
 
   if (isDebug) {
