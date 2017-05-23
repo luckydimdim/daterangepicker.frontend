@@ -5,6 +5,15 @@ import 'package:js/js.dart';
 
 @anonymous
 @JS()
+class DateLimit {
+  external int get days;
+  external set days(int v);
+
+  external factory DateLimit({int days});
+}
+
+@anonymous
+@JS()
 class DateRangePickerRange {
   external String get label;
   external set label(String v);
@@ -144,6 +153,15 @@ class DateRangePickerOptions {
 
   external set autoApply(bool v);
 
+  /*
+  * (string: 'left'/'right'/'center') Whether the picker appears aligned to the left, to the right, or centered under the HTML element it's attached to
+  */
+  external String get opens;
+  external set opens(String v);
+
+  external DateLimit get dateLimit;
+  external set dateLimit(DateLimit v);
+
   external factory DateRangePickerOptions(
       {String startDate,
       String endDate,
@@ -156,7 +174,10 @@ class DateRangePickerOptions {
       bool timePickerSeconds,
       bool singleDatePicker,
       DateRangePickerLocale locale,
-      bool autoApply});
+      bool autoApply,
+      String opens,
+        DateLimit dateLimit
+      });
 }
 
 @JS()
