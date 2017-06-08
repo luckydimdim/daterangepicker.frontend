@@ -162,6 +162,8 @@ class DateRangePickerOptions {
   external DateLimit get dateLimit;
   external set dateLimit(DateLimit v);
 
+  external set isInvalidDate(Function func);
+
   external factory DateRangePickerOptions(
       {String startDate,
       String endDate,
@@ -176,8 +178,8 @@ class DateRangePickerOptions {
       DateRangePickerLocale locale,
       bool autoApply,
       String opens,
-        DateLimit dateLimit
-      });
+      DateLimit dateLimit,
+      Function isInvalidDate});
 }
 
 @JS()

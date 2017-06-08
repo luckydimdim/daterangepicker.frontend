@@ -17,11 +17,12 @@ import 'package:daterangepicker/daterangepicker.dart';
 import 'package:alert/alert_service.dart';
 
 bool get isDebug =>
-  (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) != 'true';
+    (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
+    'true';
 
 @Component(selector: 'app')
 @View(
-  template: '''
+    template: '''
     <master-layout>
 
           <input daterangepicker type="text" class="form-control" id="start-date"
@@ -30,11 +31,9 @@ bool get isDebug =>
                            [options]="optionsModel" (selected)="dateSelected(\$event)"/>
 
     </master-layout>''',
-  directives: const [MasterLayoutComponent, DateRangePickerDirective])
+    directives: const [MasterLayoutComponent, DateRangePickerDirective])
 class AppComponent {
-
   DateRangePickerOptions optionsModel = new DateRangePickerOptions();
-
 
   AppComponent() {
     var locale = new DateRangePickerLocale()
@@ -73,7 +72,6 @@ class AppComponent {
     print(e['start']);
     print(e['end']);
   }
-
 }
 
 main() async {
