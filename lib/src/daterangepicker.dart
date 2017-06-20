@@ -185,10 +185,18 @@ class DateRangePickerOptions {
 @JS()
 class JQuery {
   external daterangepicker(DateRangePickerOptions options, dynamic callback);
+  external DateRangePickerData data(String selector);
 }
 
 @JS()
 external JQuery $([String query]);
+
+@anonymous
+@JS()
+class DateRangePickerData {
+  external setStartDate(String date);
+  external setEndDate(String date);
+}
 
 class DateRangePicker {
   DateRangePicker(

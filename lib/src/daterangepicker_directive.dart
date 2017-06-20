@@ -30,4 +30,12 @@ class DateRangePickerDirective implements AfterViewInit {
 
     selected.emit(result);
   }
+
+  setStartDate(String date) {
+    $(input.nativeElement).data('daterangepicker').setStartDate(date);
+  }
+
+  setEndDate(String date) {
+    $(input.nativeElement).data('daterangepicker').setEndDate(date);
+  }
 }
